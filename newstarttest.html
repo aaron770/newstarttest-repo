@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first questionair page</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+<form>
+	<div id= question>
+<ul class="question-list">
+  
+  <LH id=que>gfh</LH>
+
+  <li id="choice-0">
+    <input type="radio" name="radio" id="choice0" data-price="100" value="product1" checked="checked">
+    <label for="choice1"><span>question 1</span></label>
+  </li>
+
+  <li id="choice-1">
+    <input type="radio" name="radio" id="choice1" data-price="110" value="choice2"><label for="choice2"><span>question 2 </span></label>
+  </li>
+
+  <li id="choice-2">
+    <input type="radio" name="radio" id="choice2" data-price="110" value="product3"><label for="product3"><span>question 3 </span></label>
+  </li>
+
+  <li id="choice-3">
+    <input type="radio" name="radio" id="choice3" data-price="110" value="product3"><label for="product3"><span>question 4 </span></label>
+  </li>
+</ul>
+<input type="button" id="jqtest" value="next"  onclick= "nextQuestionOnclick()">
+</div>
+<input type="button" id="jqtest" value="got correct"  onclick= "alert(gotCorrect)">
+</div>
+</form> 
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+var allQuestions = [{question: "Who is Prime Minister of the United Kingdom?", choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], correctAnswer:0},
+{question: "Why are mohel so poor?", choices: ["They make there money off of tips.", "People get angry at them when they try to make to much of a cut.", "They deal in too small products.", "Not enough people want to get circumsized."], correctAnswer:3},
+{question: "What is the worst thing a mohel can say?", choices: ["Oops.", "don’t worry this is nothing plastic surgery cant fix.", "I hope you wanted a little girl.", "Don’t worry I’v made this mistake many times."], correctAnswer:3},
+{question: "What are the benefits of having a circumcision?", choices: ["Reduced risk of urinary tract infections.", "Reduced risk of cancer for men and there partners.", "prevents balanitis, phimosis.", "All of the above."], correctAnswer:3},
+{question: "What are the risks of circumsision?", choices: ["Pain.", "Bleeding.", "Meatiti.", "All of the above."], correctAnswer:3},
+{question: "When is the best time to have a circumcision?", choices: ["When someone is fully grown so they can make a decision.", "When someone is an adult it is healthier", "Within the first few days a child is born or the procedure becomes more complicated and riskier", "Tony Blair"], correctAnswer:2},
+{question: "How long does it take to recover?", choices: ["It takes a year until newborns can start walking again.", "A long time to get rid of the limp.", "You will always be missing something", "Everyone is different and it depends on the exact procedure but on average 7-10 days. "], correctAnswer:3},
+{question: "What are the different types of circumcision?", choices: ["Dorsal slit technique.", "Clamp or Shield.", "Sleeve excision.", "All of the above. "], correctAnswer:3},
+{question: "What are the different types of circumcision?", choices: ["Dorsal slit technique.", "Clamp or Shield.", "Sleeve excision.", "All of the above."], correctAnswer:3},
+{question: "Why some people prefer using a mohel?", choices: ["Some are more experienced then a lot of doctors  resulting in a more cosmetic, heathier and quicker procedure.", "Religious reasons", "Parents want to have the feeling of a traditional religious atmosphere.", "All of the above."], correctAnswer:3}
+];
+
+//initial value
+$(document).ready(function(){
+  var currentChoise;
+  var changeChoice;
+  for (currentChoise = 0; currentChoise < allQuestions[0].choices.length; currentChoise++){
+      $('#que').text(allQuestions[0].question);
+      $('#choice-' + currentChoise + ' span').text(allQuestions[0].choices[currentChoise]);
+  };
+});
+
+var currentQuestion = 0;
+var gotCorrect = 0;
+
+function nextQuestionOnclick() {
+
+    var correct = allQuestions[currentQuestion].correctAnswer;
+    var test = document.getElementsByName("radio");
+    var sizes = test.length;
+
+      if (test[correct].checked == true) {
+        gotCorrect++;
+         alert("that is correct");
+         
+
+         } else{
+           alert('that is incorrect');
+          }
+
+currentQuestion++;
+var currentChoise;
+var changeChoice;
+//choose next question
+for (currentChoise= 0 ;currentChoise < allQuestions[currentQuestion].choices.length;currentChoise++) {
+  $('#que').text(allQuestions[currentQuestion].question);
+  $('#choice-'+currentChoise+ ' span').text(allQuestions[currentQuestion].choices[currentChoise]);
+  };    
+};
+</script>
+</body>
